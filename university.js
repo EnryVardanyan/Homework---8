@@ -14,5 +14,28 @@ class UniversityMember{
         }
     }
 }
-const newMember = new UniversityMember("Enry", 23, "Student")
-console.log(newMember.info())
+class Teacher extends UniversityMember{
+    constructor(name, age){
+        super(name, age, "Teacher")
+    }
+}
+class Student extends UniversityMember{
+    constructor(name, age){
+        super(name, age, "Student")
+    }
+}
+class University{
+    constructor(){
+        this.teachers = []
+        this.students = []
+    }
+    addMember(member){
+        if(member.role === "Student"){
+            this.students.push(member.name)
+        } else if(member.role === "Teacher"){
+            this.teachers.push(member.name)
+        } else throw new Error("Incorrect Input")
+    }
+}
+const newMember = new Student("Enry", 23)
+console.log(newMember.role)
