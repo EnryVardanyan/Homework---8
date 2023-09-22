@@ -31,11 +31,29 @@ class University{
     }
     addMember(member){
         if(member.role === "Student"){
-            this.students.push(member.name)
+            this.students.push(member)
         } else if(member.role === "Teacher"){
             this.teachers.push(member.name)
         } else throw new Error("Incorrect Input")
     }
+    removeMember(member){
+        if(member.role === "Student" && this.students.includes(member)){
+            this.students = this.students.filter((student) => student !== member)
+        } else if(member.role === "Teacher" && this.teachers.includes(member)){
+            this.teachers = this.teachers.filter((teacher) => teacher !== member)
+        } else throw new Error("Incorrect Input")
+    }
+    startLesson(){
+        this.students.forEach((student) => student.energy -= 2)
+        this.teachers.forEach((teacher) => teacher.energy -= 5)
+    }
 }
 const newMember = new Student("Enry", 23)
-console.log(newMember.role)
+const newMember1 = new Student("Saqo", 23)
+const politexnik = new University()
+politexnik.addMember(newMember)
+politexnik.addMember(newMember1)
+politexnik.removeMember(newMember1)
+politexnik.startLesson()
+console.log(politexnik.students)
+// politexnik()
