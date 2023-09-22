@@ -16,8 +16,15 @@ class Shiritori{
         this.game_over = true
         return "game over"
     }
+    restart(){
+        this.game_over = false
+        this.words = []
+        return "game restarted"
+    }
 }
 const shiritori = new Shiritori()
 console.log(shiritori.play("hello"))
 console.log(shiritori.play("Ohio"))
 console.log(shiritori.play("Ohio"))
+console.log(shiritori.restart())
+console.log(shiritori.words)
